@@ -1,0 +1,101 @@
+LEVEL 0
+boJ9jbbUNNfktd78OOpsqOltutMc3MY1
+found on readme file
+
+LEVEL 1
+CV1DtqXWVFXTvM2F0k09SHz0YwRINYA9
+found on '-' file
+which couldn't be read the "normal way", had to write it's entire path
+
+LEVEL 2
+UmHadQclWmgdLOKQ3YNgjWxGoRMb5luK
+found on 'spaces in this filename' ASCII text
+
+LEVEL 3
+pIwrPrtPN36QITSp3EQaw936yaFoFgAB
+found at $HOME/inhere on '.hidden' ASCII text
+
+LEVEL 4
+koReBOKuIDDepwhWk7jZC0RTdopnAYKh
+found at $HOME/inhere on '-file07' ASCII text
+had to launch a file command for each of the ten files inside the folder
+
+LEVEL 5
+DXjZPULLxYr17uwoI01bNLQbtFemEgo7
+my first thought was that there is a pattern on the passwords. Each one of them has 33 characters
+had to search how to count characters inside a file 
+created a file called X
+pasted one of the previous passwords and ran the command 'wc -m X'
+the output was:
+[ ~]$ wc -m X
+33 X
+[ ~]$
+thought about creating a Py or bash script to run the 'wc -m' for each file on each directory, but that would take a lot of time
+then, I read the tips on the Bandit website, there it says that the file is human-readable and the size of it is exactly 1033 bytes
+ran the command :
+bandit5@bandit:~$ find -size 1033c
+which gave the output:
+./inhere/maybehere07/.file2
+
+LEVEL 6
+HKBPTKQnIay4Fw76bEy8PVxKEDQRKTzs
+my first big problem, had to search for a write-up
+came across one that explained that using the 2>/dev/null would help
+why? Because the file is owned by a different user than the one we're logged in
+but that doesn't mean that we don't have permission to read it, so, this last command
+tells the "find" function to ignore every standard error
+where "2" means stderr or "Standard Error" (such as 'Permission denied')
+and /dev/null is basically a void, means "get rid of everything that goes in there"
+so we can translate "2>/dev/null" to "ignore all errors"
+
+LEVEL 7
+cvX2JJa4CFALtqS87jk27qwqGhBM9plV
+that was easy actually. Just had to run 'cat data.txt | grep millionth'
+since on the tips it says "The password for the next level is stored in the file data.txt next to the word millionth"
+
+LEVEL 8
+UsvVyFSfZZWbi6wgC7dAFyFuR6jQQUhR
+I've read that the uniq command only read duplicates when they're next to each other
+ab
+ab
+c
+de
+c
+de
+like this, the uniq only understand that 'ab' is repeating, so we use the command
+sort X | uniq -r
+the output is going to be 
+2 ab
+2 c
+2 de
+the solution to this level is running
+sort data.txt | uniq -u
+
+LEVEL 9
+truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk
+just had to run 'strings data.txt'
+
+LEVEL 10
+IFukwKGsFW8MOq3IRFqrxE1hxTNEbUPR
+cat data.txt | base64 -d 
+
+LEVEL 11
+5Te8Y4drgCRfCx8ugdwuEX8KFC6k2EUu
+cat data.txt | tr 'A-Za-z' 'N-ZA-Mn-za-m'
+
+LEVEL 12
+8ZjyCRiBWFYkneahHwxCv3wb2a1ORpYL
+this was a pure nightmare 
+had to decompress the data.txt about 7 or 8 times
+
+LEVEL 13
+4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e
+ssh -i sshkey.private bandit14@localhost
+
+LEVEL 14
+BfMYroe26WYalil77FoDi9qh59eK5xNr
+nc localhost 30000
+
+LEVEL 15
+cluFn7wTiGryunymYOu4RcffSxQluehd
+openssl s_client -connect localhost:30001
