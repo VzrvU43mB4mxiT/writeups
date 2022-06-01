@@ -60,7 +60,8 @@ Esta dica é um ótimo ponto de partida. A partir disso, vamos efetuar um **fuzz
 
 Utilizaremos [esta wordlist](https://github.com/3ndG4me/KaliLists/blob/master/dirb/small.txt) para efetuar os testes com a ferramenta [wfuzz](https://github.com/xmendez/wfuzz).
 
-## **Fuzzing de subdiretórios** com os parâmetros:
+## **Fuzzing de subdiretórios** 
+com os parâmetros:
 - **-w** - wordlist 
 - **-u** - como agora estamos atrás de subdiretórios, a palavra "FUZZ" que indica ao software onde inserir o texto, será no final do endereço
 - **-c** - output com cores
